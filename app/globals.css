@@ -42,6 +42,11 @@ body {
   font-family: var(--font-open-sans), "Open Sans", sans-serif;
 }
 
+/* Remove default blue tap overlay on mobile WebKit browsers. */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 a {
   color: inherit;
   text-decoration: inherit;
@@ -586,6 +591,12 @@ img {
 
 textarea {
   resize: vertical;
+}
+
+@media (max-width: 767px) {
+  .theme-fab-wrap {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) {

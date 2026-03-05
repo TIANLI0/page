@@ -38,13 +38,13 @@ export const SITE_CONFIG = {
     {
       title: "Hongmo AI",
       desc: "All-in-one agent platform for small and medium websites.",
-      href: "https://github.com/TIANLI0/MCP_Host",
+      href: "https://ai.zhheo.com/",
       img: "/img/hmai.png",
     },
     {
       title: "Zhikuu",
       desc: "AI writing editor focused on Chinese content workflows.",
-      href: "https://github.com/Tianli-CDN/cdn-server",
+      href: "https://zhikuu.com/",
       img: "/img/zhikuu.png",
     },
     {
