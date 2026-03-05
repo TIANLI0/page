@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
   profile: {
     name: "Tianli",
     title:
-      "Full time Optoelectronic Information Science and Engineering student, part time back-end developer.",
+      "Product intern and Optoelectronic Information Science and Engineering student.",
     email: "wutianli@tianli0.top",
     avatarUrl: "https://q1.qlogo.cn/g?b=qq&nk=507249007&s=640",
   },
