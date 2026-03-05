@@ -1,0 +1,22 @@
+{
+  "name": "Tianli",
+  "short_name": "Tianli",
+  "description": "Personal homepage of Tianli.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f1210",
+  "theme_color": "#5b8def",
+  "icons": [
+    {
+      "src": "/site-icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/site-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

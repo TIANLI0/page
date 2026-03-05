@@ -14,6 +14,14 @@ export const metadata: Metadata = {
   description:
     "Undergraduate student / Front-end / CN & EN & ES",
   manifest: "/site.webmanifest",
+  icons: {
+    icon: [
+      { url: "/site-icon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    shortcut: "/site-icon.png",
+    apple: "/site-icon.png",
+  },
   openGraph: {
     title: "Tianli",
     description: "Undergraduate student / Front-end / CN & EN & ES",
