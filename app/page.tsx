@@ -2,7 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { BookOpenText, Github, Mail, Smartphone } from "lucide-react";
+import { BookOpenText, GitFork, Mail, Smartphone } from "lucide-react";
+import CurvedLoop from "@/components/CurvedLoop";
+import GlassSurface from "@/components/GlassSurface";
+import TargetCursor from "@/components/TargetCursor";
 import {
   argbFromHex,
   hexFromArgb,
@@ -76,7 +79,7 @@ function formatNowTime() {
 function renderLinkIcon(icon: LinkIconKey) {
   switch (icon) {
     case "github":
-      return <Github size={26} strokeWidth={2.1} />;
+      return <GitFork size={26} strokeWidth={2.1} />;
     case "blog":
       return <BookOpenText size={26} strokeWidth={2.1} />;
     case "coolapk":
@@ -108,6 +111,7 @@ export default function Home() {
   const [isPickerOpen, setIsPickerOpen] = useState(false);
   const [nowTime, setNowTime] = useState("--:--");
   const [showFloatingScrollbar, setShowFloatingScrollbar] = useState(false);
+  const [avatarBgColor, setAvatarBgColor] = useState("#C4C4C4");
   const hideScrollbarTimerRef = useRef<number | null>(null);
   const [seedColor, setSeedColor] = useState(() => {
     if (typeof window !== "undefined") {
@@ -242,6 +246,7 @@ export default function Home() {
       root.style.setProperty("--elevated-border", palette.elevatedBorder);
       root.style.setProperty("--elevated-shadow", palette.elevatedShadow);
       root.style.setProperty("--theme-seed", seedColor);
+      setAvatarBgColor(palette.bg);
     };
 
     const lightPalette = buildPalette(false);
@@ -332,7 +337,32 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-hex-1A1D1A min-h-100vh flex flex-col">
+    <div className="bg-hex-1A1D1A min-h-100vh flex flex-col" id="top">
+      <TargetCursor spinDuration={2.2} hideDefaultCursor={true} parallaxOn={true} />
+
+      <nav className="glass-nav-wrap" aria-label="Main navigation">
+        <GlassSurface
+          width="320px"
+          height={52}
+          borderRadius={999}
+          displace={4}
+          distortionScale={-100}
+          redOffset={0}
+          greenOffset={8}
+          blueOffset={14}
+          opacity={0.74}
+          backgroundOpacity={0.12}
+          saturation={1.15}
+          className="glass-nav"
+        >
+          <div className="glass-nav-inner">
+            <a href="#links" className="glass-nav-link cursor-target">Links</a>
+            <a href="#projects" className="glass-nav-link cursor-target">Projects</a>
+            <a href={`mailto:${SITE_CONFIG.profile.email}`} className="glass-nav-link cursor-target">Contact</a>
+          </div>
+        </GlassSurface>
+      </nav>
+
       <header className="svelte-1ena5bt">
         <div className="mx-auto max-w-1024px py-60px md:py-80px xl:py-120px px-20px">
           <div className="flex flex-col gap-30px items-start">
@@ -343,11 +373,11 @@ export default function Home() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
-              className="w-120px h-120px md:w-150px md:h-150px lg:w-180px lg:h-180px"
+              className="w-120px h-120px md:w-150px md:h-150px lg:w-180px lg:h-180px cursor-target"
             >
               <path
                 d="M65.8329 7.61157C81.0982 -2.46432 100.902 -2.46432 116.167 7.61157V7.61157C121.03 10.8211 126.461 13.0708 132.169 14.2397V14.2397C150.088 17.9091 164.091 31.9124 167.76 49.8313V49.8313C168.929 55.539 171.179 60.9705 174.388 65.8329V65.8329C184.464 81.0982 184.464 100.902 174.388 116.167V116.167C171.179 121.03 168.929 126.461 167.76 132.169V132.169C164.091 150.088 150.088 164.091 132.169 167.76V167.76C126.461 168.929 121.03 171.179 116.167 174.388V174.388C100.902 184.464 81.0982 184.464 65.8329 174.388V174.388C60.9705 171.179 55.539 168.929 49.8313 167.76V167.76C31.9124 164.091 17.9091 150.088 14.2397 132.169V132.169C13.0708 126.461 10.8211 121.03 7.61157 116.167V116.167C-2.46432 100.902 -2.46432 81.0982 7.61157 65.8329V65.8329C10.8211 60.9705 13.0708 55.539 14.2397 49.8313V49.8313C17.9091 31.9124 31.9123 17.9091 49.8313 14.2397V14.2397C55.539 13.0708 60.9705 10.8211 65.8329 7.61157V7.61157Z"
-                fill="#C4C4C4"
+                fill={avatarBgColor}
               />
               <path
                 d="M65.8329 7.61157C81.0982 -2.46432 100.902 -2.46432 116.167 7.61157V7.61157C121.03 10.8211 126.461 13.0708 132.169 14.2397V14.2397C150.088 17.9091 164.091 31.9124 167.76 49.8313V49.8313C168.929 55.539 171.179 60.9705 174.388 65.8329V65.8329C184.464 81.0982 184.464 100.902 174.388 116.167V116.167C171.179 121.03 168.929 126.461 167.76 132.169V132.169C164.091 150.088 150.088 164.091 132.169 167.76V167.76C126.461 168.929 121.03 171.179 116.167 174.388V174.388C100.902 184.464 81.0982 184.464 65.8329 174.388V174.388C60.9705 171.179 55.539 168.929 49.8313 167.76V167.76C31.9124 164.091 17.9091 150.088 14.2397 132.169V132.169C13.0708 126.461 10.8211 121.03 7.61157 116.167V116.167C-2.46432 100.902 -2.46432 81.0982 7.61157 65.8329V65.8329C10.8211 60.9705 13.0708 55.539 14.2397 49.8313V49.8313C17.9091 31.9124 31.9123 17.9091 49.8313 14.2397V14.2397C55.539 13.0708 60.9705 10.8211 65.8329 7.61157V7.61157Z"
@@ -381,7 +411,7 @@ export default function Home() {
             <div className="flex rounded-full bg-hex-383934 py-8px px-8px md:py-10px md:px-10px text-14px">
               <a
                 href={`mailto:${SITE_CONFIG.profile.email}`}
-                className="flex gap-15px rounded-full bg-hex-D9EAD7 py-8px px-15px md:py-10px md:px-20px items-center text-hex-363C33"
+                className="flex gap-15px rounded-full bg-hex-D9EAD7 py-8px px-15px md:py-10px md:px-20px items-center text-hex-363C33 cursor-target"
               >
                 <Mail size={22} strokeWidth={2} />
                 <span className="text-hex-363C33 font-bold">
@@ -393,9 +423,20 @@ export default function Home() {
         </div>
       </header>
 
+      <section className="curved-loop-band" aria-label="Curved intro marquee">
+        <CurvedLoop
+          marqueeText="Product Thinking • User Value • Fast Iteration • Tianli •"
+          speed={0.6}
+          curveAmount={250}
+          direction="left"
+          interactive={true}
+          className="curved-loop-text"
+        />
+      </section>
+
       <div className="main bg-hex-EDEFE3 rounded-t-50px flex-1 py-15px pb-50px lg:py-50px svelte-16y6iu1">
         <div className="mx-auto max-w-1024px px-10px lg:px-20px gap-40px flex flex-col">
-          <section className="flex flex-col bg-hex-FCF9EF px-30px py-40px lg:p-40px gap-20px rounded-50px">
+          <section id="links" className="flex flex-col bg-hex-FCF9EF px-30px py-40px lg:p-40px gap-20px rounded-50px">
             <div className="flex items-center justify-between">
               <span className="uppercase font-bold text-18px text-hex-000">
                 Links
@@ -406,7 +447,7 @@ export default function Home() {
                 <a
                   key={item.title}
                   href={item.href}
-                  className="bg-hex-F6F3D4 rounded-20px lg:rounded-30px py-20px px-30px flex gap-30px items-center"
+                  className="bg-hex-F6F3D4 rounded-20px lg:rounded-30px py-20px px-30px flex gap-30px items-center cursor-target"
                   target="_blank"
                   rel="me noopener noreferrer"
                 >
@@ -424,7 +465,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="flex flex-col bg-hex-FCF9EF px-30px py-40px lg:p-40px gap-20px rounded-50px">
+          <section id="projects" className="flex flex-col bg-hex-FCF9EF px-30px py-40px lg:p-40px gap-20px rounded-50px">
             <div className="flex items-center justify-between">
               <span className="uppercase font-bold text-18px text-hex-000">
                 Projects
@@ -434,7 +475,7 @@ export default function Home() {
               {SITE_CONFIG.projects.map((project) => (
                 <a
                   key={project.title}
-                  className="bg-hex-F6F3D4 flex flex-col rounded-40px overflow-hidden"
+                  className="bg-hex-F6F3D4 flex flex-col rounded-40px overflow-hidden cursor-target"
                   href={project.href}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -537,7 +578,7 @@ export default function Home() {
 
         <button
           type="button"
-          className="theme-fab"
+          className="theme-fab cursor-target"
           onClick={() => setIsPickerOpen((open) => !open)}
           aria-label="Toggle Material You color picker"
         >
